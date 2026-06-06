@@ -1,4 +1,9 @@
-import { Outlet, createRootRoute, Link } from "@tanstack/react-router";
+import {
+  createRootRouteWithContext,
+  Link,
+  Outlet,
+} from "@tanstack/react-router";
+import type { AuthContext } from "../hooks/use-auth.ts";
 
 const activeProps = {
   style: {
@@ -6,10 +11,14 @@ const activeProps = {
   },
 };
 
-export const Route = createRootRoute({
+type RouterContext = {
+  authentication: AuthContext;
+};
+
+export const Route = createRootRouteWithContext<RouterContext>()({
   component: () => (
     <>
-      <h1>my app</h1>
+      <h1>My App</h1>
       <ul>
         <li>
           <Link to="/" activeProps={activeProps}>
@@ -18,7 +27,7 @@ export const Route = createRootRoute({
         </li>
         <li>
           <Link to="/profile" activeProps={activeProps}>
-            {({ isActive }) => <>Profile {isActive && "-"}</>}
+            {({ isActive }) => <>Profile {isActive && "~"}</>}
           </Link>
         </li>
         <li>
@@ -29,6 +38,21 @@ export const Route = createRootRoute({
         <li>
           <Link to="/search" activeProps={activeProps}>
             Search
+          </Link>
+        </li>
+        <li>
+          <Link to="/login" activeProps={activeProps}>
+            Login
+          </Link>
+        </li>
+        <li>
+          <Link to="/dashboard" activeProps={activeProps}>
+            Dashboard
+          </Link>
+        </li>
+        <li>
+          <Link to="/settings" activeProps={activeProps}>
+            Settings
           </Link>
         </li>
       </ul>

@@ -16,6 +16,7 @@ const ItemFilters = v.object({
 
 type ItemFilters = v.InferOutput<typeof ItemFilters>;
 
+// youtube.com/watch?v=O6dS0_IvvK0&list=PLOQjd5dsGSxJilh0lBofeY8Qib98kzmF5&index=4&pp=iAQB закончил на третьем уроке
 export const Route = createFileRoute("/search")({
   validateSearch: (search) => v.parse(ItemFilters, search),
   component: Search,
