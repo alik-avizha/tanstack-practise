@@ -65,6 +65,15 @@ export const Route = createRootRouteWithContext<RouterContext>()({
             Layouts
           </Link>
         </li>
+        <li>
+          <Link
+            to="/steps"
+            activeProps={activeProps}
+            search={{ username: "Leonardo", step: 0 }}
+          >
+            Steps
+          </Link>
+        </li>
       </ul>
       <Outlet />
     </>

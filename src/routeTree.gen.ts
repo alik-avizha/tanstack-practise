@@ -9,6 +9,7 @@
 // Additionally, you should also exclude this file from your linter and/or formatter to prevent it from being checked or modified.
 
 import { Route as rootRouteImport } from './routes/__root'
+import { Route as StepsRouteImport } from './routes/steps'
 import { Route as SearchRouteImport } from './routes/search'
 import { Route as ProfileRouteImport } from './routes/profile'
 import { Route as LoginRouteImport } from './routes/login'
@@ -26,6 +27,11 @@ import { Route as hiddenFolderLayoutsVisibleLayoutBarRouteImport } from './route
 import { Route as hiddenFolderLayoutsHiddenLayoutFooRouteImport } from './routes/(hidden-folder)/layouts/_hiddenLayout/foo'
 import { Route as hiddenFolderLayoutsHiddenLayoutBarRouteImport } from './routes/(hidden-folder)/layouts/_hiddenLayout/bar'
 
+const StepsRoute = StepsRouteImport.update({
+  id: '/steps',
+  path: '/steps',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const SearchRoute = SearchRouteImport.update({
   id: '/search',
   path: '/search',
@@ -117,6 +123,7 @@ export interface FileRoutesByFullPath {
   '/login': typeof LoginRoute
   '/profile': typeof ProfileRoute
   '/search': typeof SearchRoute
+  '/steps': typeof StepsRoute
   '/first-level': typeof hiddenFolderFirstLevelRoute
   '/dashboard': typeof AuthenticatedDashboardRoute
   '/settings': typeof AuthenticatedSettingsRoute
@@ -134,6 +141,7 @@ export interface FileRoutesByTo {
   '/login': typeof LoginRoute
   '/profile': typeof ProfileRoute
   '/search': typeof SearchRoute
+  '/steps': typeof StepsRoute
   '/first-level': typeof hiddenFolderFirstLevelRoute
   '/dashboard': typeof AuthenticatedDashboardRoute
   '/settings': typeof AuthenticatedSettingsRoute
@@ -153,6 +161,7 @@ export interface FileRoutesById {
   '/login': typeof LoginRoute
   '/profile': typeof ProfileRoute
   '/search': typeof SearchRoute
+  '/steps': typeof StepsRoute
   '/(hidden-folder)/first-level': typeof hiddenFolderFirstLevelRoute
   '/_authenticated/dashboard': typeof AuthenticatedDashboardRoute
   '/_authenticated/settings': typeof AuthenticatedSettingsRoute
@@ -172,6 +181,7 @@ export interface FileRouteTypes {
     | '/login'
     | '/profile'
     | '/search'
+    | '/steps'
     | '/first-level'
     | '/dashboard'
     | '/settings'
@@ -189,6 +199,7 @@ export interface FileRouteTypes {
     | '/login'
     | '/profile'
     | '/search'
+    | '/steps'
     | '/first-level'
     | '/dashboard'
     | '/settings'
@@ -207,6 +218,7 @@ export interface FileRouteTypes {
     | '/login'
     | '/profile'
     | '/search'
+    | '/steps'
     | '/(hidden-folder)/first-level'
     | '/_authenticated/dashboard'
     | '/_authenticated/settings'
@@ -226,6 +238,7 @@ export interface RootRouteChildren {
   LoginRoute: typeof LoginRoute
   ProfileRoute: typeof ProfileRoute
   SearchRoute: typeof SearchRoute
+  StepsRoute: typeof StepsRoute
   hiddenFolderFirstLevelRoute: typeof hiddenFolderFirstLevelRoute
   PokemonIdRoute: typeof PokemonIdRoute
   PokemonIndexRoute: typeof PokemonIndexRoute
@@ -235,6 +248,13 @@ export interface RootRouteChildren {
 
 declare module '@tanstack/react-router' {
   interface FileRoutesByPath {
+    '/steps': {
+      id: '/steps'
+      path: '/steps'
+      fullPath: '/steps'
+      preLoaderRoute: typeof StepsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/search': {
       id: '/search'
       path: '/search'
@@ -406,6 +426,7 @@ const rootRouteChildren: RootRouteChildren = {
   LoginRoute: LoginRoute,
   ProfileRoute: ProfileRoute,
   SearchRoute: SearchRoute,
+  StepsRoute: StepsRoute,
   hiddenFolderFirstLevelRoute: hiddenFolderFirstLevelRoute,
   PokemonIdRoute: PokemonIdRoute,
   PokemonIndexRoute: PokemonIndexRoute,
