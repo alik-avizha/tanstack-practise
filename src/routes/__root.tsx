@@ -55,6 +55,16 @@ export const Route = createRootRouteWithContext<RouterContext>()({
             Settings
           </Link>
         </li>
+        <li>
+          <Link to="/first-level" activeProps={activeProps}>
+            First level
+          </Link>
+        </li>
+        <li>
+          <Link to="/layouts/visibleLayout" activeProps={activeProps}>
+            Layouts
+          </Link>
+        </li>
       </ul>
       <Outlet />
     </>
