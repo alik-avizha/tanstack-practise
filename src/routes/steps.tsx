@@ -2,6 +2,8 @@ import { createFileRoute } from "@tanstack/react-router";
 
 const LAST_STEP = 3;
 
+type StepsSearchParams = { username: string; step?: number };
+
 export const Route = createFileRoute("/steps")({
   component: RouteComponent,
   validateSearch: (search) => {
@@ -11,6 +13,10 @@ export const Route = createFileRoute("/steps")({
       username: search.username ? String(search.username) : "Guest",
       step: isNaN(step) ? undefined : Math.max(Math.min(LAST_STEP, step), 0),
     };
+  },
+  staticData: {
+    breadcrumb: ({ search }: { search: StepsSearchParams }) =>
+      search.step ? ["Steps", `${search.step}`] : "Steps",
   },
 });
 

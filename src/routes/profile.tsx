@@ -10,6 +10,7 @@ export const Route = createFileRoute("/profile")({
       });
     }
   },
+  staticData: { breadcrumb: "Profile" },
   component: RouteComponent,
 });
 

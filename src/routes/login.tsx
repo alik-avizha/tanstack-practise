@@ -3,6 +3,7 @@ import { isAuthenticated, signIn, signOut } from "../utils/auth.ts";
 import { useState } from "react";
 
 export const Route = createFileRoute("/login")({
+  staticData: { breadcrumb: "Login" },
   component: RouteComponent,
 });
 

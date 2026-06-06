@@ -6,6 +6,7 @@ import {
 } from "@tanstack/react-router";
 import { routeTree } from "./routeTree.gen";
 import { useAuth } from "./hooks/use-auth.ts";
+import type { BreadcrumbValue } from "./compoents/navigation/router-breadcrumb.tsx";
 
 const stepsMask = createRouteMask({
   routeTree,
@@ -24,6 +25,10 @@ const router = createRouter({
 declare module "@tanstack/react-router" {
   interface Register {
     router: typeof router;
+  }
+
+  interface StaticDataRouteOption {
+    breadcrumb?: BreadcrumbValue;
   }
 }
 
