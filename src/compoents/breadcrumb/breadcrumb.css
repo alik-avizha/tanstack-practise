@@ -1,55 +1,61 @@
+@reference "../../index.css";
+
 .breadcrumb-list {
-    display: flex;
-    flex-wrap: wrap;
-    align-items: center;
-    gap: 8px;
-    margin: 0;
-    padding: 0;
-    list-style: none;
-    font-size: 14px;
-    color: #6b7280;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 8px;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  font-size: 14px;
+  color: #9ca3af;
 }
 
 .breadcrumb-item {
-    display: inline-flex;
-    align-items: center;
-    gap: 8px;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
 }
 
 .breadcrumb-link {
-    color: inherit;
-    text-decoration: none;
-    transition: color 0.2s;
+  color: #9ca3af;
+  text-decoration: none;
+  transition: color 0.2s;
 }
 
 .breadcrumb-link:hover {
-    color: #111827;
+  color: #00f5ff;
 }
 
 .breadcrumb-page {
-    color: #111827;
-    font-weight: 400;
+  color: #e5e7eb;
+  font-weight: 400;
 }
 
 .breadcrumb-separator {
-    display: flex;
-    align-items: center;
-    user-select: none;
+  display: flex;
+  align-items: center;
+  user-select: none;
+  color: #6b7280;
 }
 
 .breadcrumb-ellipsis {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    width: 36px;
-    height: 36px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 36px;
+  height: 36px;
 }
 
 .sr-only {
-    position: absolute;
-    width: 1px;
-    height: 1px;
-    overflow: hidden;
-    clip-path: inset(50%);
-    white-space: nowrap;
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border-width: 0;
 }

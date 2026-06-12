@@ -5,7 +5,32 @@ type PokemonDetail = {
   weight: number;
   sprites: {
     front_default: string;
+    front_shiny?: string;
+    back_shiny?: string;
   };
+  types: Array<{
+    slot: number;
+    type: {
+      name: string;
+      url: string;
+    };
+  }>;
+  abilities: Array<{
+    slot: number;
+    is_hidden: boolean;
+    ability: {
+      name: string;
+      url: string;
+    };
+  }>;
+  stats: Array<{
+    base_stat: number;
+    effort: number;
+    stat: {
+      name: string;
+      url: string;
+    };
+  }>;
 };
 
 export async function getPokemon(id: string): Promise<PokemonDetail> {
