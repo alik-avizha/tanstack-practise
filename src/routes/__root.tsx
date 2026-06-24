@@ -2,9 +2,11 @@ import { createRootRouteWithContext, Outlet } from "@tanstack/react-router";
 import type { AuthContext } from "../hooks/use-auth.ts";
 import { Header } from "../compoents/header.tsx";
 import { RouterBreadcrumb } from "../compoents/navigation/router-breadcrumb.tsx";
+import type { QueryClient } from "@tanstack/react-query";
 
 type RouterContext = {
   authentication: AuthContext;
+  queryClient: QueryClient;
 };
 
 export const Route = createRootRouteWithContext<RouterContext>()({
