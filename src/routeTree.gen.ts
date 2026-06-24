@@ -9,6 +9,7 @@
 // Additionally, you should also exclude this file from your linter and/or formatter to prevent it from being checked or modified.
 
 import { Route as rootRouteImport } from './routes/__root'
+import { Route as VirtualRouteImport } from './routes/virtual'
 import { Route as UsersRouteImport } from './routes/users'
 import { Route as StepsRouteImport } from './routes/steps'
 import { Route as SearchRouteImport } from './routes/search'
@@ -34,6 +35,11 @@ import { Route as hiddenFolderLayoutsVisibleLayoutBarRouteImport } from './route
 import { Route as hiddenFolderLayoutsHiddenLayoutFooRouteImport } from './routes/(hidden-folder)/layouts/_hiddenLayout/foo'
 import { Route as hiddenFolderLayoutsHiddenLayoutBarRouteImport } from './routes/(hidden-folder)/layouts/_hiddenLayout/bar'
 
+const VirtualRoute = VirtualRouteImport.update({
+  id: '/virtual',
+  path: '/virtual',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const UsersRoute = UsersRouteImport.update({
   id: '/users',
   path: '/users',
@@ -169,6 +175,7 @@ export interface FileRoutesByFullPath {
   '/search': typeof SearchRoute
   '/steps': typeof StepsRoute
   '/users': typeof UsersRoute
+  '/virtual': typeof VirtualRoute
   '/pokemon/$id': typeof PokemonIdRouteRouteWithChildren
   '/post/$id': typeof PostIdRouteRouteWithChildren
   '/first-level': typeof hiddenFolderFirstLevelRoute
@@ -192,6 +199,7 @@ export interface FileRoutesByTo {
   '/search': typeof SearchRoute
   '/steps': typeof StepsRoute
   '/users': typeof UsersRoute
+  '/virtual': typeof VirtualRoute
   '/first-level': typeof hiddenFolderFirstLevelRoute
   '/dashboard': typeof AuthenticatedDashboardRoute
   '/settings': typeof AuthenticatedSettingsRoute
@@ -217,6 +225,7 @@ export interface FileRoutesById {
   '/search': typeof SearchRoute
   '/steps': typeof StepsRoute
   '/users': typeof UsersRoute
+  '/virtual': typeof VirtualRoute
   '/pokemon/$id': typeof PokemonIdRouteRouteWithChildren
   '/post/$id': typeof PostIdRouteRouteWithChildren
   '/(hidden-folder)/first-level': typeof hiddenFolderFirstLevelRoute
@@ -244,6 +253,7 @@ export interface FileRouteTypes {
     | '/search'
     | '/steps'
     | '/users'
+    | '/virtual'
     | '/pokemon/$id'
     | '/post/$id'
     | '/first-level'
@@ -267,6 +277,7 @@ export interface FileRouteTypes {
     | '/search'
     | '/steps'
     | '/users'
+    | '/virtual'
     | '/first-level'
     | '/dashboard'
     | '/settings'
@@ -291,6 +302,7 @@ export interface FileRouteTypes {
     | '/search'
     | '/steps'
     | '/users'
+    | '/virtual'
     | '/pokemon/$id'
     | '/post/$id'
     | '/(hidden-folder)/first-level'
@@ -318,6 +330,7 @@ export interface RootRouteChildren {
   SearchRoute: typeof SearchRoute
   StepsRoute: typeof StepsRoute
   UsersRoute: typeof UsersRoute
+  VirtualRoute: typeof VirtualRoute
   hiddenFolderFirstLevelRoute: typeof hiddenFolderFirstLevelRoute
   hiddenFolderLayoutsHiddenLayoutRoute: typeof hiddenFolderLayoutsHiddenLayoutRouteWithChildren
   hiddenFolderLayoutsVisibleLayoutRoute: typeof hiddenFolderLayoutsVisibleLayoutRouteWithChildren
@@ -325,6 +338,13 @@ export interface RootRouteChildren {
 
 declare module '@tanstack/react-router' {
   interface FileRoutesByPath {
+    '/virtual': {
+      id: '/virtual'
+      path: '/virtual'
+      fullPath: '/virtual'
+      preLoaderRoute: typeof VirtualRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/users': {
       id: '/users'
       path: '/users'
@@ -608,6 +628,7 @@ const rootRouteChildren: RootRouteChildren = {
   SearchRoute: SearchRoute,
   StepsRoute: StepsRoute,
   UsersRoute: UsersRoute,
+  VirtualRoute: VirtualRoute,
   hiddenFolderFirstLevelRoute: hiddenFolderFirstLevelRoute,
   hiddenFolderLayoutsHiddenLayoutRoute:
     hiddenFolderLayoutsHiddenLayoutRouteWithChildren,

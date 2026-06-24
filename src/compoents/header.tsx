@@ -94,6 +94,12 @@ export const Header = () => {
             >
               Post
             </CustomLink>
+            <CustomLink
+              to="/virtual"
+              className="px-4 py-2 rounded-lg text-sm font-medium text-gray-300 hover:text-neon-cyan hover:bg-dark-700 border border-transparent hover:border-neon-cyan/30 transition-all duration-300"
+            >
+              Virtual
+            </CustomLink>
           </nav>
 
           {/* Mobile Menu Button */}
