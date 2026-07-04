@@ -28,4 +28,10 @@ export default defineConfig([
       ],
     },
   },
+  {
+    files: ['src/routes/virtual.tsx'],
+    rules: {
+      'react-hooks/incompatible-library': 'off',
+    },
+  },
 ])

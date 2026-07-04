@@ -1,15 +1,13 @@
-export const useAuth = () => {
-  const signIn = () => {
-    localStorage.setItem("isAuthenticated", "true");
-  };
+import {
+  isAuthenticated,
+  signIn,
+  signOut,
+} from "../utils/auth.ts";
 
-  const signOut = () => {
-    localStorage.removeItem("isAuthenticated");
-  };
-
-  const isLogged = () => localStorage.getItem("isAuthenticated") === "true";
-
-  return { signIn, signOut, isLogged };
-};
+export const useAuth = () => ({
+  signIn,
+  signOut,
+  isLogged: isAuthenticated,
+});
 
 export type AuthContext = ReturnType<typeof useAuth>;

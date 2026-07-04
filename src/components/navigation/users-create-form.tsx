@@ -7,10 +7,18 @@ export const UsersCreateForm = () => {
 
   const createUserMutation = useCreateUserMutation();
 
-  const onHandleCreateUser = async () => {
+  const handleCreateUser = () => {
     if (!username || !age) return;
 
-    createUserMutation.mutate({ username, age: Number(age) });
+    createUserMutation.mutate(
+      { username, age: Number(age) },
+      {
+        onSuccess: () => {
+          setUsername("");
+          setAge("");
+        },
+      },
+    );
   };
 
   return (
@@ -20,23 +28,26 @@ export const UsersCreateForm = () => {
         placeholder="Username"
         className="border-2 border-gray-300 p-2 rounded-md"
         value={username}
-        onChange={(e) => setUsername(e.target.value)}
+        onChange={(event) => setUsername(event.target.value)}
       />
       <input
         type="number"
         placeholder="Age"
         className="border-2 border-gray-300 p-2 rounded-md"
         value={age}
-        onChange={(e) => setAge(e.target.value)}
+        onChange={(event) => setAge(event.target.value)}
       />
       <button
         type="button"
         disabled={createUserMutation.isPending}
-        className="bg-blue-500 text-white p-2 rounded-md"
-        onClick={onHandleCreateUser}
+        className="bg-blue-500 text-white p-2 rounded-md disabled:opacity-50"
+        onClick={handleCreateUser}
       >
         {createUserMutation.isPending ? "Creating..." : "Create"}
       </button>
+      {createUserMutation.isError && (
+        <p className="text-red-400 text-sm">Failed to create user</p>
+      )}
     </div>
   );
 };

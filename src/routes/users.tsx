@@ -1,6 +1,6 @@
 import { createFileRoute } from "@tanstack/react-router";
-import { UsersList } from "../compoents/users-list.tsx";
-import { UsersCreateForm } from "../compoents/navigation/users-create-form.tsx";
+import { UsersList } from "../components/users-list.tsx";
+import { UsersCreateForm } from "../components/navigation/users-create-form.tsx";
 
 export const Route = createFileRoute("/users")({
   component: RouteComponent,

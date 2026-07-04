@@ -6,23 +6,15 @@ import {
 } from "@tanstack/react-router";
 import { routeTree } from "./routeTree.gen";
 import { useAuth } from "./hooks/use-auth.ts";
-import type { BreadcrumbValue } from "./compoents/navigation/router-breadcrumb.tsx";
-import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
+import type { BreadcrumbValue } from "./components/navigation/router-breadcrumb.tsx";
+import { QueryClientProvider } from "@tanstack/react-query";
+import { queryClient } from "./lib/query-client.ts";
 
 const stepsMask = createRouteMask({
   routeTree,
   from: "/steps",
   to: "/steps",
   search: (prev) => ({ ...prev, step: undefined }),
-});
-
-const queryClient = new QueryClient({
-  // defaultOptions: {
-  //   queries: {
-  //     // глобальная жизнь кеша
-  //     staleTime: 1000 * 60 * 5,
-  //   },
-  // },
 });
 
 const router = createRouter({
