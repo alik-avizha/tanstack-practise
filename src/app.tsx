@@ -8,6 +8,7 @@ import { routeTree } from "./routeTree.gen";
 import { useAuth } from "./hooks/use-auth.ts";
 import type { BreadcrumbValue } from "./components/navigation/router-breadcrumb.tsx";
 import { QueryClientProvider } from "@tanstack/react-query";
+import { ReactQueryDevtools } from "@tanstack/react-query-devtools";
 import { queryClient } from "./lib/query-client.ts";
 
 const stepsMask = createRouteMask({
@@ -43,6 +44,7 @@ export const App = () => {
         router={router}
         context={{ authentication, queryClient }}
       />
+      <ReactQueryDevtools initialIsOpen={false} />
     </QueryClientProvider>
   );
 };

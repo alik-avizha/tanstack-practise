@@ -1,12 +1,13 @@
 # tanstack-practise
 
-Pet-проект для изучения экосистемы TanStack: Router, Query и Virtual.
+Pet-проект для изучения экосистемы TanStack: Router, Query, Form и Virtual.
 
 ## Стек
 
 - React 19 + Vite
 - [@tanstack/react-router](https://tanstack.com/router) — file-based routing, loaders, auth guards, breadcrumbs
-- [@tanstack/react-query](https://tanstack.com/query) — серверное состояние, кеш, мутации
+- [@tanstack/react-query](https://tanstack.com/query) — серверное состояние, кеш, мутации, optimistic updates
+- [@tanstack/react-form](https://tanstack.com/form) — формы + Valibot (Standard Schema)
 - [@tanstack/react-virtual](https://tanstack.com/virtual) — виртуализация списков
 - Tailwind CSS 4
 - json-server — mock API для `/users`, `/posts`, `/notifications`
@@ -41,8 +42,8 @@ src/
 | Маршрут | Что изучается |
 |---------|---------------|
 | `/pokemon` | loader, nested routes |
-| `/post` | queryOptions, invalidate/cancel |
-| `/users` | pagination, mutations, cache updates |
+| `/post` | queryOptions, ensureQueryData, invalidate/cancel + AbortSignal |
+| `/users` | Form + Valibot, pagination, optimistic create, cache updates |
 | `/virtual` | useVirtualizer |
 | `/steps` | search params, route masks |
 | `/profile`, `/dashboard` | auth guards, useBlocker |
